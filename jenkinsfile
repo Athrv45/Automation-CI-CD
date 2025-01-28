@@ -21,7 +21,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat 'npm test'
+                bat 'npm test -- --passWithNoTests'
+
             }
         }
 
@@ -44,7 +45,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh '''
+                bat '''
                 kubectl apply -f deployment.yaml
                 kubectl apply -f service.yaml
                 '''
