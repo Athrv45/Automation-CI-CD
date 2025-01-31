@@ -51,6 +51,7 @@ pipeline {
                 script {
                     // Ensure kubectl can connect to the cluster
                     withEnv(['KUBECONFIG=C:/Users/HP/.kube/config']) {
+                        bat 'kubectl config view'
                         bat 'kubectl get nodes'
                     }
                 }
